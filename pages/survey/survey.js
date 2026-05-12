@@ -1,5 +1,5 @@
 const SURVEY_CONFIG = require('../../utils/questions');
-const { buildScaleValues, isAnswered, calcProgress, validateAllAnswers } = require('../../utils/util');
+const { buildScaleValues, isAnswered, calcProgress, validateAllAnswers, generateSessionToken } = require('../../utils/util');
 
 Page({
   data: {
@@ -11,6 +11,7 @@ Page({
     progressPercent: 0,
     isCurrentAnswered: false,
     submitting: false,
+    sessionToken: '',
   },
 
   onLoad() {
@@ -28,6 +29,7 @@ Page({
       currentQuestion: questions[0],
       progressPercent: calcProgress(0, total),
       isCurrentAnswered: !questions[0].required,
+      sessionToken: generateSessionToken(),
     });
   },
 
@@ -89,7 +91,7 @@ Page({
 
   // 提交问卷
   submitSurvey() {
-    const { questions, answers } = this.data;
+    const { questions, answers, sessionToken } = this.data;
     const { valid, firstUnansweredIndex } = validateAllAnswers(questions, answers);
 
     if (!valid) {
@@ -112,6 +114,7 @@ Page({
       data: {
         answers,
         submittedAt: new Date().toISOString(),
+        sessionToken,
       },
       success: () => {
         wx.hideLoading();

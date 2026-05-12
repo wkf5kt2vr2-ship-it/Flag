@@ -62,10 +62,20 @@ function formatDate(isoString) {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
+/**
+ * 生成一次性会话标识，用于防止重复提交
+ * 仅在内存中存储，不会写入数据库
+ * @returns {string}
+ */
+function generateSessionToken() {
+  return 'sess_' + Math.random().toString(36).slice(2) + Date.now().toString(36);
+}
+
 module.exports = {
   buildScaleValues,
   isAnswered,
   calcProgress,
   validateAllAnswers,
   formatDate,
+  generateSessionToken,
 };
