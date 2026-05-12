@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="hero-card card">
+    <view class="icon-wrap">
+      <text class="icon">&#x1F9E0;</text>
+    </view>
+    <text class="survey-title">{{surveyTitle}}</text>
+    <text class="survey-desc">{{surveyDesc}}</text>
+
+    <view class="meta-row">
+      <view class="meta-item">
+        <text class="meta-num">{{questionCount}}</text>
+        <text class="meta-label">题</text>
+      </view>
+      <view class="meta-divider"></view>
+      <view class="meta-item">
+        <text class="meta-num">{{estimatedMinutes}}</text>
+        <text class="meta-label">分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="privacy-card card">
+    <text class="privacy-title">隐私说明</text>
+    <text class="privacy-text">本问卷不收集任何个人信息，仅记录您的答题内容。数据仅用于心理健康教学研究，请放心填写。</text>
+  </view>
+
+  <button class="btn-start btn-primary" bindtap="startSurvey">开始问卷</button>
+</view>
