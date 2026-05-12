@@ -1,0 +1,83 @@
+/* 全局样式 */
+page {
+  --color-primary: #4A90D9;
+  --color-primary-light: #EBF4FF;
+  --color-bg: #F5F7FA;
+  --color-text: #333333;
+  --color-text-secondary: #888888;
+  --color-border: #E8ECF0;
+  --color-white: #FFFFFF;
+  --color-success: #52C41A;
+  --radius-card: 12rpx;
+  --radius-btn: 48rpx;
+
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* 卡片容器 */
+.card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-card);
+  padding: 32rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 主按钮 */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-btn);
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 0 48rpx;
+  height: 88rpx;
+  border: none;
+  line-height: 1;
+}
+
+.btn-primary[disabled] {
+  background-color: #AACEF0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-radius: var(--radius-btn);
+  font-size: 32rpx;
+  font-weight: 500;
+  padding: 0 48rpx;
+  height: 88rpx;
+  border: 2rpx solid var(--color-primary);
+  line-height: 1;
+}
+
+/* 底部安全区 */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: constant(safe-area-inset-bottom);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+  font-size: 24rpx;
+}
