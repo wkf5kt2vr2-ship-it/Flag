@@ -1,0 +1,8 @@
+<view class="container">
+  <view class="success-card card">
+    <view class="check-icon">✅</view>
+    <text class="success-title">感谢您的参与！</text>
+    <text class="success-desc">您的回答已成功提交。本次调查不收集任何个人信息，请放心。</text>
+  </view>
+  <button class="btn-home btn-primary" bindtap="goHome">返回首页</button>
+</view>
