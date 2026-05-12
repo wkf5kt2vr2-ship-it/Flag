@@ -1,0 +1,92 @@
+<view class="survey-page">
+  <!-- 进度条 -->
+  <view class="progress-wrap">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <text class="progress-text">{{currentIndex + 1}} / {{totalQuestions}}</text>
+  </view>
+
+  <!-- 题目卡片 -->
+  <view class="question-card card">
+    <view class="question-header">
+      <text class="question-badge">{{currentQuestion.required ? '必填' : '选填'}}</text>
+      <text wx:if="{{currentQuestion.type === 'multiple'}}" class="question-tip">可多选</text>
+    </view>
+    <text class="question-text">{{currentQuestion.text}}</text>
+
+    <!-- 单选题 -->
+    <view wx:if="{{currentQuestion.type === 'single'}}" class="options-list">
+      <view
+        wx:for="{{currentQuestion.options}}"
+        wx:key="index"
+        class="option-item {{answers[currentQuestion.id] === item ? 'selected' : ''}}"
+        bindtap="selectSingle"
+        data-qid="{{currentQuestion.id}}"
+        data-value="{{item}}"
+      >
+        <view class="radio-dot {{answers[currentQuestion.id] === item ? 'radio-dot--checked' : ''}}"></view>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 多选题 -->
+    <view wx:elif="{{currentQuestion.type === 'multiple'}}" class="options-list">
+      <view
+        wx:for="{{currentQuestion.options}}"
+        wx:key="index"
+        class="option-item {{answers[currentQuestion.id] && answers[currentQuestion.id].indexOf(item) !== -1 ? 'selected' : ''}}"
+        bindtap="toggleMultiple"
+        data-qid="{{currentQuestion.id}}"
+        data-value="{{item}}"
+      >
+        <view class="checkbox-box {{answers[currentQuestion.id] && answers[currentQuestion.id].indexOf(item) !== -1 ? 'checkbox-box--checked' : ''}}"></view>
+        <text class="option-text">{{item}}</text>
+      </view>
+    </view>
+
+    <!-- 量表题 -->
+    <view wx:elif="{{currentQuestion.type === 'scale'}}" class="scale-wrap">
+      <view class="scale-labels">
+        <text class="scale-label-text">{{currentQuestion.minLabel}}</text>
+        <text class="scale-label-text">{{currentQuestion.maxLabel}}</text>
+      </view>
+      <view class="scale-row">
+        <view
+          wx:for="{{currentQuestion.scaleValues}}"
+          wx:key="index"
+          class="scale-btn {{answers[currentQuestion.id] === item ? 'scale-btn--selected' : ''}}"
+          bindtap="selectScale"
+          data-qid="{{currentQuestion.id}}"
+          data-value="{{item}}"
+        >
+          <text>{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 导航按钮 -->
+  <view class="nav-row safe-bottom">
+    <button
+      wx:if="{{currentIndex > 0}}"
+      class="btn-secondary nav-btn"
+      bindtap="prevQuestion"
+    >上一题</button>
+    <view wx:else class="nav-placeholder"></view>
+
+    <button
+      wx:if="{{currentIndex < totalQuestions - 1}}"
+      class="btn-primary nav-btn"
+      bindtap="nextQuestion"
+      disabled="{{!isCurrentAnswered}}"
+    >下一题</button>
+
+    <button
+      wx:if="{{currentIndex === totalQuestions - 1}}"
+      class="btn-primary nav-btn"
+      bindtap="submitSurvey"
+      disabled="{{!isCurrentAnswered || submitting}}"
+    >{{submitting ? '提交中...' : '提交问卷'}}</button>
+  </view>
+</view>

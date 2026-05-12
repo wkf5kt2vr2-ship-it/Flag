@@ -1,0 +1,213 @@
+.survey-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 160rpx;
+}
+
+/* 进度条 */
+.progress-wrap {
+  padding: 24rpx 32rpx 16rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  background-color: var(--color-white);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background-color: var(--color-border);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: 4rpx;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* 题目卡片 */
+.question-card {
+  margin: 24rpx 32rpx;
+  flex: 1;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 16rpx;
+}
+
+.question-badge {
+  font-size: 22rpx;
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+}
+
+.question-tip {
+  font-size: 22rpx;
+  color: var(--color-text-secondary);
+}
+
+.question-text {
+  display: block;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 32rpx;
+}
+
+/* 选项列表 */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  padding: 24rpx;
+  border: 2rpx solid var(--color-border);
+  border-radius: 12rpx;
+  background-color: var(--color-white);
+  transition: all 0.15s;
+}
+
+.option-item.selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.option-text {
+  font-size: 28rpx;
+  color: var(--color-text);
+  flex: 1;
+}
+
+/* 单选圆点 */
+.radio-dot {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
+  border: 3rpx solid var(--color-border);
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.radio-dot--checked {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  box-shadow: inset 0 0 0 5rpx var(--color-white);
+}
+
+/* 多选方块 */
+.checkbox-box {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 8rpx;
+  border: 3rpx solid var(--color-border);
+  flex-shrink: 0;
+  transition: all 0.15s;
+  position: relative;
+}
+
+.checkbox-box--checked {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+}
+
+.checkbox-box--checked::after {
+  content: '';
+  position: absolute;
+  left: 8rpx;
+  top: 3rpx;
+  width: 12rpx;
+  height: 18rpx;
+  border: 4rpx solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+/* 量表 */
+.scale-wrap {
+  padding-top: 8rpx;
+}
+
+.scale-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.scale-label-text {
+  font-size: 22rpx;
+  color: var(--color-text-secondary);
+}
+
+.scale-row {
+  display: flex;
+  gap: 12rpx;
+  flex-wrap: wrap;
+}
+
+.scale-btn {
+  flex: 1;
+  min-width: 72rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid var(--color-border);
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: all 0.15s;
+}
+
+.scale-btn--selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+/* 导航栏 */
+.nav-row {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 32rpx;
+  background-color: var(--color-white);
+  box-shadow: 0 -2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.nav-btn {
+  flex: 1;
+  max-width: 300rpx;
+}
+
+.nav-placeholder {
+  flex: 1;
+  max-width: 300rpx;
+}
