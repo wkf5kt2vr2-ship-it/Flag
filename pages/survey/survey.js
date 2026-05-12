@@ -12,6 +12,7 @@ Page({
     isCurrentAnswered: false,
     submitting: false,
     sessionToken: '',
+    highlightQuestion: false,
   },
 
   onLoad() {
@@ -101,7 +102,9 @@ Page({
         currentQuestion: questions[firstUnansweredIndex],
         progressPercent: calcProgress(firstUnansweredIndex, questions.length),
         isCurrentAnswered: false,
+        highlightQuestion: true,
       });
+      setTimeout(() => this.setData({ highlightQuestion: false }), 400);
       return;
     }
 

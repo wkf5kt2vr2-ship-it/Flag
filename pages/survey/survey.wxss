@@ -39,6 +39,20 @@
 .question-card {
   margin: 24rpx 32rpx;
   flex: 1;
+  border: 2rpx solid transparent;
+  transition: border-color 0.15s;
+}
+
+.question-card--highlight {
+  border-color: var(--color-primary);
+  animation: shake 0.35s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-10rpx); }
+  60%       { transform: translateX(10rpx); }
+  80%       { transform: translateX(-6rpx); }
 }
 
 .question-header {

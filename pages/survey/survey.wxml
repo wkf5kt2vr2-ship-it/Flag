@@ -8,7 +8,7 @@
   </view>
 
   <!-- 题目卡片 -->
-  <view class="question-card card">
+  <view class="question-card card {{highlightQuestion ? 'question-card--highlight' : ''}}">
     <view class="question-header">
       <text class="question-badge">{{currentQuestion.required ? '必填' : '选填'}}</text>
       <text wx:if="{{currentQuestion.type === 'multiple'}}" class="question-tip">可多选</text>
