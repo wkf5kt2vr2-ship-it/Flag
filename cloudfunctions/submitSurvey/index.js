@@ -32,7 +32,7 @@ function sanitizeAnswers(answers) {
     if (!/^[a-zA-Z0-9_]+$/.test(key)) continue;
     if (typeof val === 'string' && val.length <= 200) {
       safe[key] = val;
-    } else if (typeof val === 'number' && isFinite(val)) {
+    } else if (typeof val === 'number' && Number.isInteger(val) && val >= 0 && val <= 100) {
       safe[key] = val;
     } else if (Array.isArray(val)) {
       safe[key] = val

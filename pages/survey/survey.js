@@ -50,10 +50,10 @@ Page({
     this._checkAnswered();
   },
 
-  // 量表评分
+  // 量表评分 — data-value 传来的是字符串，显式转为数字存储
   selectScale(e) {
     const { qid, value } = e.currentTarget.dataset;
-    this.setData({ [`answers.${qid}`]: value });
+    this.setData({ [`answers.${qid}`]: Number(value) });
     this._checkAnswered();
   },
 

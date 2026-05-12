@@ -19,7 +19,7 @@
     <view wx:if="{{currentQuestion.type === 'single'}}" class="options-list">
       <view
         wx:for="{{currentQuestion.options}}"
-        wx:key="index"
+        wx:key="*this"
         class="option-item {{answers[currentQuestion.id] === item ? 'selected' : ''}}"
         bindtap="selectSingle"
         data-qid="{{currentQuestion.id}}"
@@ -34,7 +34,7 @@
     <view wx:elif="{{currentQuestion.type === 'multiple'}}" class="options-list">
       <view
         wx:for="{{currentQuestion.options}}"
-        wx:key="index"
+        wx:key="*this"
         class="option-item {{answers[currentQuestion.id] && answers[currentQuestion.id].indexOf(item) !== -1 ? 'selected' : ''}}"
         bindtap="toggleMultiple"
         data-qid="{{currentQuestion.id}}"
@@ -54,7 +54,7 @@
       <view class="scale-row">
         <view
           wx:for="{{currentQuestion.scaleValues}}"
-          wx:key="index"
+          wx:key="*this"
           class="scale-btn {{answers[currentQuestion.id] === item ? 'scale-btn--selected' : ''}}"
           bindtap="selectScale"
           data-qid="{{currentQuestion.id}}"
